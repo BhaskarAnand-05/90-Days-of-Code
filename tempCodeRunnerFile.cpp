@@ -1,48 +1,14 @@
-
-// node *Merge(node *&first, node *&second)
+int length(node *head)
 // {
-//     if (first == NULL)
-//     {
-//         return second;
-//     }
-//     if (second == NULL)
-//     {
-//         return first;
-//     }
+//     node *temp = head;
+//     int count = 0;
 
-//     node *result = new node(-1);
-//     node *temp = result;
-
-//     while (first != NULL && second != NULL)
+//     while (temp != NULL)
 //     {
-//         if (first->data < second->data)
-//         {
-//             temp->next = first;
-//             temp = first;
-//             first = first->next;
-//         }
-//         else
-//         {
-//             temp->next = second;
-//             temp = second;
-//             second = second->next;
-//         }
+
+//         temp = temp->next;
+//         count++;
 //     }
 
-//     while (first != NULL)
-//     {
-//         temp->next = first;
-//         temp = first;
-//         first = first->next;
-//     }
-//     while (second != NULL)
-//     {
-//         temp->next = second;
-//         temp = second;
-//         second = second->next;
-//     }
-
-//     result = result->next;
-
-//     return result;
+//     return count;
 // }

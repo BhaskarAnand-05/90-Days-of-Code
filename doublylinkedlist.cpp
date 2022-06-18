@@ -97,6 +97,8 @@ void deleteatBEG(node *&head)
     delete delnode;
 }
 
+
+
 int main()
 {
     node *head = NULL;
