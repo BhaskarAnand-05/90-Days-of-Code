@@ -228,20 +228,33 @@ void deletecycle(node *&head)
     return;
 }
 
-int main()
+node *createll(int num)
 {
     node *head = NULL;
+    while (num != 0)
+    {
+        node *res = new node(num % 10);
+        res->next = head;
+        head = res;
+        num /= 10;
+    }
+    return head;
+}
 
-    insertatTAIL(head, 1);
-    insertatTAIL(head, 12);
-    insertatTAIL(head, 34);
+int main()
+{
+    // node *head = NULL;
 
-    print(head);
-    insertatTAIL(head, 55);
-    print(head);
-    insertatMID(head, 22, 34);
-    print(head);
-    insertatTAIL(head, 99);
+    // insertatTAIL(head, 1);
+    // insertatTAIL(head, 12);
+    // insertatTAIL(head, 34);
+
+    // print(head);
+    // insertatTAIL(head, 55);
+    // print(head);
+    // insertatMID(head, 22, 34);
+    // print(head);
+    // insertatTAIL(head, 99);
     // deletion(head, 22);
     // print(head);
     // deletehead(head);
@@ -250,15 +263,18 @@ int main()
     // cout << endl
     //      << " Found Status " << search(head, 22);
 
-    node *NewHead = reversek(head, 2);
+    // node *NewHead = reversek(head, 2);
 
-    print(NewHead);
+    // print(NewHead);
 
-    makecycle(head, 3);
-    // print(head);
-    cout << detectcycle(head)<<endl;
-    deletecycle(head);
-    cout << detectcycle(head);
+    // makecycle(head, 3);
+    // // print(head);
+    // cout << detectcycle(head)<<endl;
+    // deletecycle(head);
+    // cout << detectcycle(head);
 
+    node *head = createll(3456);
+
+    print(head);
     return 0;
 }

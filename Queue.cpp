@@ -15,7 +15,7 @@ public:
         front = rear = -1;
     }
 
-    void push(int val)
+    void enqueue(int val)
     {
         if (rear == N - 1)
         {
@@ -33,7 +33,7 @@ public:
         rear++;
     }
 
-    int pop()
+    int dequeue()
     {
         if (front > rear || front == -1)
         {
@@ -44,7 +44,7 @@ public:
         return array[front++];
     }
 
-    int top()
+    int Front()
     {
         if (front > rear || front == -1)
         {
@@ -60,7 +60,7 @@ public:
         return (rear - front + 1);
     }
 
-    bool isempty()
+    bool isEmpty()
     {
         if (front > rear || front == -1)
         {
@@ -71,26 +71,116 @@ public:
     }
 };
 
+int n=100;
+
+class Stack
+{
+
+public:
+    int top;
+    int *array;
+
+    Stack()
+    {
+        array = new int[n];
+        top = -1;
+    }
+    void push(int val)
+    {
+
+        if (top == (n - 1))
+        {
+            cout << endl
+                 << "Overflow";
+            return;
+        }
+        else
+            top++;
+        array[top] = val;
+    }
+
+    char pop()
+    {
+
+        if (top == -1)
+        {
+            cout << endl
+                 << "Underflow";
+            return -1;
+        }
+        else
+        {
+            return array[top--];
+        }
+    }
+
+    char returntop()
+    {
+        if (top == -1)
+        {
+            cout << endl
+                 << "Stack Empty";
+        }
+
+        return array[top];
+    }
+
+    int isempty()
+    {
+        if (top == -1)
+            return true;
+        else
+            return false;
+    }
+};
+
+// Queue Reversal Function
+Queue rev(Queue Q)
+{
+    Stack S;
+    if (Q.isEmpty())
+    {
+        return Q;
+    }
+
+    while (!Q.isEmpty())
+    {
+        S.push(Q.Front());
+        Q.dequeue();
+    }
+
+    while (!S.isempty())
+    {
+        Q.enqueue(S.returntop());
+        S.pop();
+    }
+
+    return Q;
+}
+
 int main()
 {
     Queue q;
 
-    q.push(1);
-    q.push(2);
-    q.push(3);
-    q.push(4);
+    q.enqueue(1);
+    q.enqueue(2);
+    q.enqueue(3);
+    q.enqueue(4);
 
-    cout << q.top() << endl;
-    q.pop();
+    cout << q.Front() << endl;
+    // q.dequeue();
 
-    cout << q.top() << endl;
-    q.pop();
+    // cout << q.Front() << endl;
+    // q.dequeue();
 
-    cout << q.top() << endl;
-    q.pop();
+    // cout << q.Front() << endl;
+    // q.dequeue();
 
-    cout << q.top() << endl;
-    q.pop();
-    // q.isempty();
+    // cout << q.Front() << endl;
+    // q.dequeue();
+
+    Queue Q = rev(q);
+    cout << Q.Front() << endl;
+    // q.isEmpty();
     return 0;
 }

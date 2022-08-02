@@ -2,13 +2,12 @@
 
 class Queue
 {
-private:
+public:
     int N = 100;
     int *array;
     int front;
     int rear;
 
-public:
     Queue()
     {
         array = new int[N];
@@ -28,9 +27,10 @@ public:
             front = rear = 0;
         }
 
-                array[rear] = val;
+        
+        array[rear] = val;
         rear++;
-    }
+        }
 
     int pop()
     {
@@ -69,3 +69,19 @@ public:
             return false;
     }
 };
+
+void displayqueue(Queue Q)
+{
+    int i;
+    if (Q.front == -1)
+    {
+        printf("Queue is empty \n");
+        return;
+    }
+    else
+    {
+        for (i = Q.front; i <= Q.rear-1; i++)
+            printf("%d ", Q.array[i]);
+        cout << endl;
+    }
+}
