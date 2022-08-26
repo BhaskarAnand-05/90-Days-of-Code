@@ -53,14 +53,14 @@ vector<int> Inorder(Node *root)
     if (root == NULL)
         return inorder;
 
-    stack<Node*> st;
+    stack<Node *> st;
     st.push(root);
 
-    Node*temp ;
+    Node *temp = root;
 
     while (!st.empty())
     {
-        while (root != NULL)
+        while (temp != NULL)
         {
             st.push(temp);
             temp = temp->left;
@@ -69,12 +69,79 @@ vector<int> Inorder(Node *root)
         temp = st.top();
         st.pop();
 
-        cout<<temp->data<<" ";
+        cout << temp->data << " ";
         temp = temp->right;
-        
     }
     return inorder;
-    
+}
+
+vector<int> PostOrder(Node *root)
+{
+    vector<int> ans;
+    // edge case
+    if (root == NULL)
+    {
+        return ans;
+    }
+
+    // Node *current = root;
+    // stack<Node *> st;
+    // Node *temp;
+    // while (current != NULL || !st.empty())
+    // {
+    //     if (current != NULL)                                      ############ 1 STACK APPROACH ##########
+    //     {
+    //         st.push(current);
+    //         current = current->left;
+    //     }
+
+    //     else
+    //         temp = st.top()->right;
+    //     if (temp == NULL)
+    //     {
+    //         temp = st.top();
+    //         st.pop();
+    //         ans.push_back(temp->data);
+
+    //         while (!st.empty() || temp == st.top()->right)
+    //         {
+    //             temp = st.top();
+    //             st.pop();
+    //             ans.push_back(temp->data);
+    //         }
+    //     }
+
+    //     else
+    //         current = temp;
+    // }
+
+    // ######### 2 STACK APPROACH  #############
+    Node *temp = root;
+    stack<Node *> st1;
+    st1.push(root);
+    stack<Node *> st2;
+
+    while (!st1.empty() && temp != NULL)
+    {
+        temp = st1.top();
+        st1.pop();
+
+        st2.push(temp);
+        if (temp->left)
+            st1.push(temp->left);
+
+        if (temp->right)
+            st1.push(temp->right);
+    }
+
+    while (!st2.empty())
+    {
+        Node *t1 = st2.top();
+        ans.push_back(t1->data);
+        st2.pop();
+    }
+
+    return ans;
 }
 int main()
 {
@@ -92,11 +159,19 @@ int main()
     {
         cout << ans[i] << " ";
     }
-    cout <<endl <<"Inorder" << endl;
+    cout << endl
+         << "Inorder" << endl;
     vector<int> res = Inorder(t1);
     for (int i = 0; i < res.size(); i++)
     {
         cout << res[i] << " ";
+    }
+    cout << endl
+         << "PostOrder" << endl;
+    vector<int> result = PostOrder(t1);
+    for (int i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << " ";
     }
 
     return 0;
