@@ -1,1 +1,2 @@
-tree->left = new Node(5);
+cout << endl
+    //      << "Inorder" << endl;

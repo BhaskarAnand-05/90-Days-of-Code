@@ -150,29 +150,28 @@ int main()
     t1->right = new Node(3);
     t1->left->left = new Node(4);
     t1->left->right = new Node(5);
-    t1->right->left = new Node(6);
-    t1->right->right = new Node(7);
+    t1->left->right->right = new Node(6);
 
-    cout << "Preorder" << endl;
-    vector<int> ans = Preorder(t1);
-    for (int i = 0; i < ans.size(); i++)
-    {
-        cout << ans[i] << " ";
-    }
-    cout << endl
-         << "Inorder" << endl;
+    // cout << "Preorder" << endl;
+    // vector<int> ans = Preorder(t1);
+    // for (int i = 0; i < ans.size(); i++)
+    // {
+    //     cout << ans[i] << " ";
+    // }
+    // cout << endl
+    //      << "Inorder" << endl;
     vector<int> res = Inorder(t1);
     for (int i = 0; i < res.size(); i++)
     {
         cout << res[i] << " ";
     }
-    cout << endl
-         << "PostOrder" << endl;
-    vector<int> result = PostOrder(t1);
-    for (int i = 0; i < result.size(); i++)
-    {
-        cout << result[i] << " ";
-    }
+    // cout << endl
+    //      << "PostOrder" << endl;
+    // vector<int> result = PostOrder(t1);
+    // for (int i = 0; i < result.size(); i++)
+    // {
+    //     cout << result[i] << " ";
+    // }
 
     return 0;
 }

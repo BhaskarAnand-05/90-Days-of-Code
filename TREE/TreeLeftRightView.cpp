@@ -79,6 +79,13 @@ void LeftView(Tree *root)
     }
 }
 
+/*                    1
+                     / \
+                    2   3
+                   / \  / \
+                  4   5 6  7
+*/
+
 int main()
 {
     Tree *t1 = new Tree(1);

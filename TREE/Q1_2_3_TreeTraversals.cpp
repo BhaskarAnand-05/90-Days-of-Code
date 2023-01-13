@@ -54,6 +54,13 @@ void postorder(Tree *root)
     cout << root->root_data << "    ";
 }
 
+/*                    1
+                     / \
+                    2   3
+                   / \  / \
+                  4   5 6  7
+*/
+
 int main()
 {
     Tree *t1 = new Tree(1);
@@ -61,20 +68,20 @@ int main()
     t1->right = new Tree(3);
     t1->left->left = new Tree(4);
     t1->left->right = new Tree(5);
-    t1->right->left = new Tree(6);
-    t1->right->right = new Tree(7);
+    t1->left->right->right = new Tree(6);
+    // t1->right->right = new Tree(7);
 
-    cout << "Preorder" << endl;
-    preorder(t1);
-    cout << endl;
+    // cout << "Preorder" << endl;
+    // preorder(t1);
+    // cout << endl;
 
     cout << "InOrder" << endl;
     inorder(t1);
     cout << endl;
 
-    cout << "PostOrder" << endl;
-    postorder(t1);
-    cout << endl;
+    // cout << "PostOrder" << endl;
+    // postorder(t1);
+    // cout << endl;
 
     return 0;
 }
