@@ -43,7 +43,7 @@ void Traversal(Node * root)
             
         }
 
-        else if (temp.second == 2) // Case of Postorder
+        else if (temp.second == 2) // Case of inorder
         {
             inorder.push_back(temp.first->data);
             temp.second++;
