@@ -37,7 +37,6 @@ vector<int> Level_Order(Node *root)
 
     queue<Node *> q;
     q.push(root);
-    
 
     Node *curr = root;
 
@@ -49,10 +48,23 @@ vector<int> Level_Order(Node *root)
             q.push(curr->left);
         if (curr->right)
             q.push(curr->right);
-        
+
         ans.push_back(curr->data);
     }
     return ans;
+}
+// Max Height of the Binary Tree
+
+int Max_Height(Node *root)
+{
+
+    // edge case
+    if (!root)
+        return 0;
+
+    int lh = Max_Height(root->left);
+    int rh = Max_Height(root->right);
+    return (1 + max(lh, rh));
 }
 
 int main()
@@ -68,15 +80,13 @@ int main()
     // cout << endl
     //      << "Inorder" << endl;
     cout << endl
-         << "Level Order" << endl;
-    vector<int> ans = Level_Order(tree);
-    for (int i = 0; i < ans.size(); i++)
-    {
-        cout << ans[i] << " ";
-    }
+         << "Depth = " << Max_Height(tree) << endl;
+    // vector<int> ans = Level_Order(tree);
+    // for (int i = 0; i < ans.size(); i++)
+    // {
+    //     cout << ans[i] << " ";
+    // }
 
-    
-    
 
     return 0;
 }
