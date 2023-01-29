@@ -58,15 +58,34 @@ vector<int> Level_Order(Node *root)
 int Max_Height(Node *root)
 {
 
-    // edge case
-    if (!root)
-        return 0;
+    // // edge case
+    // if (!root)
+    //     return 0;
 
     int lh = Max_Height(root->left);
     int rh = Max_Height(root->right);
     return (1 + max(lh, rh));
 }
 
+bool Balanced_Binary(Node *root)
+{
+    // edge Case
+    if (!root)
+        return true;
+    int lh = Balanced_Binary(root->left);
+    
+    
+    int rh = Balanced_Binary(root->right);
+    if (rh == -1)
+    {
+        return -1;
+    }
+
+    if (abs(lh - rh) > 1)
+        return -1;
+    else
+        return (1 + max(lh, rh));
+}
 int main()
 {
     Node *tree = new Node(1);
@@ -80,13 +99,12 @@ int main()
     // cout << endl
     //      << "Inorder" << endl;
     cout << endl
-         << "Depth = " << Max_Height(tree) << endl;
+         << "Is Balanced??  " << Balanced_Binary(tree) << endl;
     // vector<int> ans = Level_Order(tree);
     // for (int i = 0; i < ans.size(); i++)
     // {
     //     cout << ans[i] << " ";
     // }
-
 
     return 0;
 }
