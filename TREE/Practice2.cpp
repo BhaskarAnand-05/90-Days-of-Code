@@ -73,8 +73,7 @@ bool Balanced_Binary(Node *root)
     if (!root)
         return true;
     int lh = Balanced_Binary(root->left);
-    
-    
+
     int rh = Balanced_Binary(root->right);
     if (rh == -1)
     {
@@ -88,7 +87,72 @@ bool Balanced_Binary(Node *root)
 }
 
 // Right Left View of the BT
+vector<int> LeftView(Node *root)
+{
+    vector<int> lview;
 
+    // edge case
+    if (!root)
+        return lview;
+
+    queue<Node *> q;
+    q.push(root);
+
+    
+
+    while (!q.empty())
+    {
+        int size = q.size();
+        for (int i = 0; i < size; i++)
+        {
+            Node *curr = q.front();
+            q.pop();
+            if (i == 0)
+            {
+                lview.push_back(curr->data);
+            }
+
+            if (curr->left)
+                q.push(curr->left);
+            if (curr->right)
+                q.push(curr->right);
+        }
+    }
+    return lview;
+}
+vector<int> RightView(Node *root)
+{
+    vector<int> rview;
+
+    // edge case
+    if (!root)
+        return rview;
+
+    queue<Node *> q;
+    q.push(root);
+
+    
+
+    while (!q.empty())
+    {
+        int size = q.size();
+        for (int i = 0; i < size; i++)
+        {
+            Node *curr = q.front();
+            q.pop();
+            if (i == size-1)
+            {
+                rview.push_back(curr->data);
+            }
+
+            if (curr->left)
+                q.push(curr->left);
+            if (curr->right)
+                q.push(curr->right);
+        }
+    }
+    return rview;
+}
 
 int main()
 {
@@ -99,16 +163,17 @@ int main()
     tree->left->right = new Node(5);
     tree->right->left = new Node(6);
     tree->right->right = new Node(7);
+    tree->left->right->right = new Node(8);
 
     // cout << endl
     //      << "Inorder" << endl;
     cout << endl
-         << "Is Balanced??  " << Balanced_Binary(tree) << endl;
-    // vector<int> ans = Level_Order(tree);
-    // for (int i = 0; i < ans.size(); i++)
-    // {
-    //     cout << ans[i] << " ";
-    // }
+         << " right view" << endl;
+    vector<int> ans = RightView(tree);
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << " ";
+    }
 
     return 0;
 }

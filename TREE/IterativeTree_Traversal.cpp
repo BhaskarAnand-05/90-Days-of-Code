@@ -1,19 +1,19 @@
 #include "Headerfile.h"
 
-class Node
-{
-public:
-    int data;
-    Node *left;
-    Node *right;
-    Node(int val)
-    {
-        data = val;
-        left = NULL;
-        right = NULL;
-    }
-    ~Node();
-};
+// class Node
+// {
+// public:
+//     int data;
+//     Node *left;
+//     Node *right;
+//     Node(int val)
+//     {
+//         data = val;
+//         left = NULL;
+//         right = NULL;
+//     }
+//     ~Node();
+// };
 
 vector<int> Preorder(Node *root)
 {
@@ -64,13 +64,15 @@ vector<int> Inorder(Node *root)
         {
             st.push(temp);
             temp = temp->left;
+            // cout<<temp->data<<"->";
         }
 
         temp = st.top();
         st.pop();
 
-        cout << temp->data << " ";
+        cout << temp->data << " "<<endl;
         temp = temp->right;
+        
     }
     return inorder;
 }
