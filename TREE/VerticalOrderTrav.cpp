@@ -1,7 +1,10 @@
 #include"Headerfile.h"
 
 // Vertical Order Traversal
-vector<int> Vertical_Order()
+vector<vector<int>> Vertical_Order(Node* root)
+{
+    map<int,map<int,multiset(Node*)>>
+}
 
 
 int main()

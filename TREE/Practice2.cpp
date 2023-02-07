@@ -67,23 +67,21 @@ int Max_Height(Node *root)
     return (1 + max(lh, rh));
 }
 
-bool Balanced_Binary(Node *root)
+int Balanced_Binary(Node *root)
 {
     // edge Case
     if (!root)
-        return true;
-    int lh = Balanced_Binary(root->left);
+        return 0;
 
-    int rh = Balanced_Binary(root->right);
-    if (rh == -1)
-    {
-        return -1;
-    }
+    int leftHeight = Balanced_Binary(root->left);
+    int rightHeight = Balanced_Binary(root->right);
 
-    if (abs(lh - rh) > 1)
+    if (abs(leftHeight - rightHeight) > 1)
         return -1;
-    else
-        return (1 + max(lh, rh));
+    if (leftHeight == -1 || rightHeight == -1)
+        return -1;
+
+    return max(leftHeight, rightHeight) + 1;
 }
 
 // Right Left View of the BT
@@ -97,8 +95,6 @@ vector<int> LeftView(Node *root)
 
     queue<Node *> q;
     q.push(root);
-
-    
 
     while (!q.empty())
     {
@@ -131,8 +127,6 @@ vector<int> RightView(Node *root)
     queue<Node *> q;
     q.push(root);
 
-    
-
     while (!q.empty())
     {
         int size = q.size();
@@ -140,7 +134,7 @@ vector<int> RightView(Node *root)
         {
             Node *curr = q.front();
             q.pop();
-            if (i == size-1)
+            if (i == size - 1)
             {
                 rview.push_back(curr->data);
             }
@@ -168,12 +162,14 @@ int main()
     // cout << endl
     //      << "Inorder" << endl;
     cout << endl
-         << " right view" << endl;
-    vector<int> ans = RightView(tree);
-    for (int i = 0; i < ans.size(); i++)
-    {
-        cout << ans[i] << " ";
-    }
+         << " balanced binary" << endl;
+    // vector<int> ans = RightView(tree);
+    // for (int i = 0; i < ans.size(); i++)
+    // {
+    //     cout << ans[i] << " ";
+    // }
+    int ans = Balanced_Binary(tree);
+    cout<<ans;
 
     return 0;
 }
