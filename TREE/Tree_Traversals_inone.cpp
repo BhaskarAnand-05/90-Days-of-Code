@@ -1,17 +1,17 @@
 #include"Headerfile.h"
 
-class Node
-{
-    public:
-    int data;
-    Node *left = NULL;
-    Node *right = NULL;
+// class Node
+// {
+//     public:
+//     int data;
+//     Node *left = NULL;
+//     Node *right = NULL;
 
-    Node(int val)
-    {
-        data = val;
-    }
-};
+//     Node(int val)
+//     {
+//         data = val;
+//     }
+// };
 void Traversal(Node * root)
 {
     vector<vector<int>> ans;
@@ -77,8 +77,7 @@ void Traversal(Node * root)
 
 int main()
 {
-    queue<int> q1;
-    q1.
+    
     Node *tree = new Node(1);
     tree->left = new Node(2);
     tree->left->left = new Node(3);
@@ -99,4 +98,4 @@ int main()
                                     /
                                    4
                                   /
-                                 5       
+                                 5       */
