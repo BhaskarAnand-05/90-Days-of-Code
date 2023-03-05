@@ -1,19 +1,25 @@
 #include "Headerfile.h"
 
-int maxpathsum(Node *root)
+int solve(Node *root, int &maxi)
 {
     // edge case
     if (!root)
-        return -1;
+        return 0;
 
-    int leftsum = maxpathsum(root->left);
-    int rightsum = maxpathsum(root->right);
+    int leftsum = max(0,solve(root->left, maxi));
+    int rightsum = max(0,solve(root->right, maxi));
 
-    int maxi = max((leftsum + rightsum + root->data), maxi);
+    maxi = max((leftsum + rightsum + root->data), maxi);
 
-    return root->data + max(leftsum, rightsum);
+    return (root->data + max(leftsum, rightsum));
 }
 
+int maxpathsum(Node *root)
+{
+    int maxi = 0;
+   solve(root, maxi);
+    return maxi;
+}
 int main()
 {
     Node *tree = new Node(1);
