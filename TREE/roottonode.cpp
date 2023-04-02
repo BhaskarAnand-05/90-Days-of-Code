@@ -9,12 +9,13 @@ bool Root_Node(Node *root, Node *node, vector<int> &ans)
 
     ans.push_back(root->data);
 
-   if (Root_Node(root->left, node, ans) || Root_Node(root->right, node, ans))
-   return true;
+    if (Root_Node(root->left, node, ans) || Root_Node(root->right, node, ans))
+    {
+        return true;
+    }
 
-   ans.pop_back();
-   return false;
-
+    ans.pop_back();
+    return false;
 }
 
 int main()
